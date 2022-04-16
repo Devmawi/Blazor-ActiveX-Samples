@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorHybridControls", "BlazorHybridControls\BlazorHybridControls.csproj", "{A1ABC3D6-91F3-4E62-96BC-21DD1D39AE36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.WinFormsApp", "BlazorApp.WinFormsApp\BlazorApp.WinFormsApp.csproj", "{FDACBD3E-0630-4AA0-94C4-2E49E7AC4D76}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.ComServer", "BlazorApp.ComServer\BlazorApp.ComServer.csproj", "{C381A82B-949C-4374-A69F-4F76C21FDDD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.ComServer.TestConsole", "BlazorApp.ComServer.TestConsole\BlazorApp.ComServer.TestConsole.csproj", "{BE3ACF14-3B59-4545-A2ED-197B70F851C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.WinFormsControls", "BlazorApp.WinFormsControls\BlazorApp.WinFormsControls.csproj", "{F79CFD0D-36CE-414D-AC32-8C3976F68B51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37119761-EC9C-4526-82F4-1C5561AB9CD6}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1ABC3D6-91F3-4E62-96BC-21DD1D39AE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1ABC3D6-91F3-4E62-96BC-21DD1D39AE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1ABC3D6-91F3-4E62-96BC-21DD1D39AE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1ABC3D6-91F3-4E62-96BC-21DD1D39AE36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDACBD3E-0630-4AA0-94C4-2E49E7AC4D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDACBD3E-0630-4AA0-94C4-2E49E7AC4D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDACBD3E-0630-4AA0-94C4-2E49E7AC4D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDACBD3E-0630-4AA0-94C4-2E49E7AC4D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C381A82B-949C-4374-A69F-4F76C21FDDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C381A82B-949C-4374-A69F-4F76C21FDDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C381A82B-949C-4374-A69F-4F76C21FDDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C381A82B-949C-4374-A69F-4F76C21FDDD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3ACF14-3B59-4545-A2ED-197B70F851C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3ACF14-3B59-4545-A2ED-197B70F851C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3ACF14-3B59-4545-A2ED-197B70F851C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3ACF14-3B59-4545-A2ED-197B70F851C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F79CFD0D-36CE-414D-AC32-8C3976F68B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F79CFD0D-36CE-414D-AC32-8C3976F68B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F79CFD0D-36CE-414D-AC32-8C3976F68B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F79CFD0D-36CE-414D-AC32-8C3976F68B51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68EBC65E-7ECB-412C-B273-2B28B41B6DC0}
+	EndGlobalSection
+EndGlobal
