@@ -26,7 +26,8 @@ namespace BlazorActiveXControls
             {
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddWindowsFormsBlazorWebView();
-                serviceCollection.AddSingleton(sc => AppState);
+                AppState.Click += AppState_Click;
+                serviceCollection.AddSingleton(AppState);
 
                 var directory = Path.GetDirectoryName(GetType().Assembly.Location);
                 var path = Path.Combine(directory, "wwwroot\\index.html");       
@@ -57,6 +58,7 @@ namespace BlazorActiveXControls
                 blazorWebView1.Services = serviceCollection.BuildServiceProvider();
                 blazorWebView1.RootComponents.Add<App>("#app");
 
+
             }
             catch (Exception ex)
             {
@@ -65,6 +67,11 @@ namespace BlazorActiveXControls
             }
            
             
+        }
+        protected void AppState_Click(object sender, EventArgs e)
+        {
+            
+           button1.Text = "Try Debugging, Counter:" +  Counter++;
         }
 
         private void WebView_CoreWebView2InitializationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)

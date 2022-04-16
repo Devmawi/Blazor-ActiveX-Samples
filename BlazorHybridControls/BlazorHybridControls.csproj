@@ -9,15 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <EnableComHosting>true</EnableComHosting>
     <PlatformTarget>x86</PlatformTarget>
-    <!--<AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>-->
   </PropertyGroup>
-  <Target Name="ServerUsage" Condition="'$(RegFree)' != 'True'" AfterTargets="Build">
-    <Message Importance="High" Text="%0a************************************%0a*** $(MSBuildProjectName) usage instructions ***%0a************************************" />
-    <Message Importance="High" Text="The server must be COM registered in order to activate.%0aThe following commands must be executed from an elevated command prompt." />
-    <Message Importance="High" Text="Register:%0a    regsvr32.exe &quot;$(ProjectDir)$(OutputPath)$(ComHostFileName)&quot;" />
-    <Message Importance="High" Text="Unregister:%0a    regsvr32.exe /u &quot;$(ProjectDir)$(OutputPath)$(ComHostFileName)&quot;" />
-  </Target>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.300-rc.1.5355" />
   </ItemGroup>

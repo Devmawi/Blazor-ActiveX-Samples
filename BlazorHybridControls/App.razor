@@ -13,9 +13,15 @@ Hallo App
 <div>
     Index File: @AppState.IndexFile
 </div>
+<button @onclick="ClickHandler">Blazor Click</button>
 @code {
 
     [Inject]
     private AppState AppState { get; set; }
 
+
+    public void ClickHandler()
+    {
+        AppState?.InvokeClick();
+    }
 }

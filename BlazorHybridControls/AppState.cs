@@ -11,5 +11,14 @@ namespace BlazorActiveXControls
         public string UserDataPath { get; set; }
         public string BrowserExecutionPath { get; set; }
         public string IndexFile { get; set; }
+
+        public delegate void ClickHandler (object sender, EventArgs e);
+
+        public event ClickHandler Click;
+
+        public void InvokeClick()
+        {
+            Click?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
