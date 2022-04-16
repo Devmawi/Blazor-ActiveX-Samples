@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorApp.ComContracts\BlazorApp.ComContracts.csproj">
+      <Project>{b45e7184-462e-4f9b-8316-241c6cb236c7}</Project>
+      <Name>BlazorApp.ComContracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

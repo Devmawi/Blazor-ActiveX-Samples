@@ -5,12 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorApp.ComContracts;
 
 namespace BlazorApp.ComServer
 {
 
     [ComVisible(true)]
-    [Guid("6030a647-3e6b-4eaf-af9b-a14550afee12")]
+    [Guid(ComGuids.ServerId)]
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IBlazorAppComServer
     {
@@ -24,10 +25,13 @@ namespace BlazorApp.ComServer
 
         [DispId(4)]
         public void MaximizeWindowSize();
+
+        [DispId(5)]
+        public string HelloComMessage { get; set; }
     }
 
     [ComVisible(true)]
-    [Guid("9243b788-413a-413a-8b8c-dfb5db79a2a5")
+    [Guid(ComGuids.ServerClassId)
     , ClassInterface(ClassInterfaceType.None)]
     public class BlazorAppComServer: MainForm, IBlazorAppComServer
     {
@@ -37,6 +41,8 @@ namespace BlazorApp.ComServer
         {
 
         }
+
+        public string HelloComMessage { get; set; } = "Hello COM!";
 
         public void Start()
         {

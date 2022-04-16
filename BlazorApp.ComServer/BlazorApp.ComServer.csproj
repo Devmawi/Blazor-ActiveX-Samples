@@ -15,6 +15,7 @@
     <Message Importance="High" Text="Unregister:%0a    regsvr32.exe /u &quot;$(ProjectDir)$(OutputPath)$(ComHostFileName)&quot;" />
   </Target>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorApp.ComContracts\BlazorApp.ComContracts.csproj" />
     <ProjectReference Include="..\BlazorHybridControls\BlazorHybridControls.csproj" />
   </ItemGroup>
 </Project>

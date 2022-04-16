@@ -11,10 +11,13 @@ namespace BlazorApp.ComServer.TestConsole
         [STAThread]
         static void Main(string[] args)
         {
-            //Console.ReadKey();
             // Late binding
-            var server = Type.GetTypeFromProgID("BlazorApp.ComServer.BlazorAppComServer");
+            var server = Type.GetTypeFromCLSID(Guid.Parse(ComContracts.ComGuids.ServerClassId));
             var serverInstance = Activator.CreateInstance(server);
+
+            var message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
+            server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.SetProperty, null, serverInstance, new object[] { "Hello from good old .NET Farmework!" });
+            message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
         }
     }
 }
