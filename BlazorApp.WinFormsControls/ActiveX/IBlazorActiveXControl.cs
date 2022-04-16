@@ -9,8 +9,10 @@ namespace BlazorApp.WinFormsControls.ActiveX
 {
     [ComVisible(true)]
     [Guid(ComGuids.BlazorActiveXControlId)]
-    internal interface IBlazorActiveXControl
+    [InterfaceType(ComInterfaceType.InterfaceIsDual)]
+    public interface IBlazorActiveXControl
     {
+        [DispId(0)]
         string Message { get; set; }
     }
 }

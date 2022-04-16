@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <SignAssembly>True</SignAssembly>
+    <DelaySign>True</DelaySign>
+    <AssemblyOriginatorKeyFile>D:\tmp\VisualStudio22\Blazor-ActiveX-Control\BlazorApp.WinFormsControls\SigningKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>

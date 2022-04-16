@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace BlazorApp.WinFormsControls.ActiveX
 {
 
+    [ComVisible(false)]
     [ComImport]
     [Guid(ComContracts.ComGuids.ServerId)]
     [CoClass(typeof(BlazorAppComServer))]
@@ -17,6 +18,7 @@ namespace BlazorApp.WinFormsControls.ActiveX
 
     }
 
+    [ComVisible(false)]
     [ComImport]
     [Guid(ComContracts.ComGuids.ServerClassId)]
     public class BlazorAppComServer

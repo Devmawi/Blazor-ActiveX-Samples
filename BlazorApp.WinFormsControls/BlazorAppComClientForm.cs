@@ -12,9 +12,8 @@ using System.Windows.Forms;
 
 namespace BlazorApp.WinFormsControls
 {
-    [ComVisible(true)]
-    [Guid(ComGuids.BlazorActiveXControlClassId), ClassInterface(ClassInterfaceType.None)]
-    public partial class BlazorAppComClientForm : Form, IBlazorActiveXControl
+  
+    public partial class BlazorAppComClientForm : Form
     {
         public IntPtr comServerWindowHandle { get; set; }
         public string Message { get; set; }
@@ -108,16 +107,6 @@ namespace BlazorApp.WinFormsControls
             ResizeChildWindow();
         }
 
-        [ComRegisterFunction]
-        public void RegisterControl(Type type)
-        {
-            ComRegistration.RegisterControl(type);
-        }
-
-        [ComUnregisterFunction]
-        public void UnregisterControl(Type type)
-        {
-            ComRegistration.UnregisterControl(type);
-        }
+       
     }
 }
