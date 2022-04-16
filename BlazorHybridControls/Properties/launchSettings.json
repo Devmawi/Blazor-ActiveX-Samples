@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "BlazorHybridControls": {
+      "commandName": "Project",
+      "jsWebView2Debugging": true,
+      "nativeDebugging": true
+    }
+  }
+}

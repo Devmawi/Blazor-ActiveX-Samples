@@ -19,15 +19,7 @@ namespace BlazorApp.WinFormsControls
         public BlazorAppUserControl()
         {
             InitializeComponent();
-            try
-            {
-                var f = new BlazorAppComClientForm();
-                f.AddToPanel(mainPanel);
-            }
-            catch (Exception)
-            {
-
-            }
+            
          
         }
 
@@ -43,6 +35,20 @@ namespace BlazorApp.WinFormsControls
         public static void UnregisterControl(Type type)
         {
             ComRegistration.UnregisterControl(type);
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                var f = new BlazorAppComClientForm();
+                f.AddToPanel(mainPanel);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

@@ -1,7 +1,21 @@
 ﻿@namespace BlazorActiveXControls
+@using BlazorActiveXControls
 
 <h3>App</h3>
 Hallo App 
+
+<div>
+    User Data: @AppState.UserDataPath
+</div>
+<div>
+    Browser Execution Path: @AppState.BrowserExecutionPath
+</div>
+<div>
+    Index File: @AppState.IndexFile
+</div>
 @code {
+
+    [Inject]
+    private AppState AppState { get; set; }
 
 }
