@@ -18,6 +18,12 @@ namespace BlazorApp.ComServer.TestConsole
             var message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
             server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.SetProperty, null, serverInstance, new object[] { "Hello from good old .NET Farmework!" });
             message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
+
+            // Early binding
+            var comServer = new IBlazorAppComServer();
+            message = comServer.HelloComMessage;
+            comServer.HelloComMessage = "Hello from early binding!";
+            message = comServer.HelloComMessage;
         }
     }
 }
