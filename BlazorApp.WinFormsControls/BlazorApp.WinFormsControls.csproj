@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,18 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveX\ActiveXControlHelper.cs" />
     <Compile Include="BlazorAppComClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BlazorAppComClientForm.Designer.cs">
       <DependentUpon>BlazorAppComClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActiveX\BlazorAppComServer.cs" />
     <Compile Include="BlazorAppUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BlazorAppUserControl.Designer.cs">
       <DependentUpon>BlazorAppUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActiveX\ComGuids.cs" />
+    <Compile Include="ActiveX\IBlazorActiveXControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -66,6 +71,12 @@
     <EmbeddedResource Include="BlazorAppUserControl.resx">
       <DependentUpon>BlazorAppUserControl.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorApp.ComContracts\BlazorApp.ComContracts.csproj">
+      <Project>{b45e7184-462e-4f9b-8316-241c6cb236c7}</Project>
+      <Name>BlazorApp.ComContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

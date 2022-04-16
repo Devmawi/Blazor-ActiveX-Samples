@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorApp.WinFormsControls.ActiveX;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +12,13 @@ using System.Windows.Forms;
 
 namespace BlazorApp.WinFormsControls
 {
-    public partial class BlazorAppComClientForm : Form
+    [ComVisible(true)]
+    [Guid(ComGuids.BlazorActiveXControlClassId), ClassInterface(ClassInterfaceType.None)]
+    public partial class BlazorAppComClientForm : Form, IBlazorActiveXControl
     {
         public IntPtr comServerWindowHandle { get; set; }
+        public string Message { get; set; }
+
         public Type comServer;
         public object comServerInstance;
 
@@ -98,6 +103,18 @@ namespace BlazorApp.WinFormsControls
         private void BlazorAppComClientForm_Resize(object sender, EventArgs e)
         {
             ResizeChildWindow();
+        }
+
+        [ComRegisterFunction]
+        public void RegisterControl(Type type)
+        {
+            ComRegistration.RegisterControl(type);
+        }
+
+        [ComUnregisterFunction]
+        public void UnregisterControl(Type type)
+        {
+            ComRegistration.UnregisterControl(type);
         }
     }
 }
