@@ -14,30 +14,7 @@ using System.Windows.Forms;
 
 namespace BlazorActiveXControls
 {
-    [ComVisible(true)]
-    [Guid("b4e7f571-72eb-4e38-a351-d92d0e8a9f25")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
-    public interface ICounterUserControl
-    {
-        [DispId(1)]
-        int Counter { get; set; }
-
-        [DispId(2)]
-        public void Show();
-
-        [DispId(3)]
-        public IntPtr WindowHandle();
-
-        [DispId(4)]
-        public void MaximizeWindowSize();
-
-        [DispId(5)]
-        public void ResizeWindow();
-    }
-
-    [ComVisible(true)]
-    [Guid("c5c5c30c-97c0-4ed5-8bc8-1507d0a4bd48"), ClassInterface(ClassInterfaceType.None)]
-    public partial class MainForm : Form, ICounterUserControl
+    public partial class MainForm : Form
     {
         public MainForm()
         {
@@ -55,10 +32,13 @@ namespace BlazorActiveXControls
             blazorWebView1.RootComponents.Add<App>("#app");
             
             // See also https://github.com/dotnet/maui/issues/3861
+            var browserExeData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), GetType().Assembly.GetName().Name ?? "BlazorActiveXControls", "WebView.exe");
             var userData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), GetType().Assembly.GetName().Name ?? "BlazorActiveXControls", "WebView");
+            Directory.CreateDirectory(browserExeData);
             Directory.CreateDirectory(userData);
             var creationProperties = new CoreWebView2CreationProperties()
             {
+                BrowserExecutableFolder = browserExeData,
                 UserDataFolder = userData
             };
             blazorWebView1.WebView.CreationProperties = creationProperties;

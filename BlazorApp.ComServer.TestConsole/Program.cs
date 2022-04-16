@@ -11,19 +11,22 @@ namespace BlazorApp.ComServer.TestConsole
         [STAThread]
         static void Main(string[] args)
         {
-            // Late binding
-            var server = Type.GetTypeFromCLSID(Guid.Parse(ComContracts.ComGuids.ServerClassId));
+            // Late binding doesn't work if ComContracts is referenced and used for early binding
+            /*
+            var server = Type.GetTypeFromProgID("BlazorApp.ComServer.BlazorAppComServer");
             var serverInstance = Activator.CreateInstance(server);
 
+            var members = server.GetMembers();
             var message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
             server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.SetProperty, null, serverInstance, new object[] { "Hello from good old .NET Farmework!" });
             message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
+            */
 
             // Early binding
             var comServer = new IBlazorAppComServer();
-            message = comServer.HelloComMessage;
+            var earlyBindMessage = comServer.HelloComMessage;
             comServer.HelloComMessage = "Hello from early binding!";
-            message = comServer.HelloComMessage;
+            earlyBindMessage = comServer.HelloComMessage;
         }
     }
 }

@@ -19,8 +19,8 @@ namespace BlazorApp.WinFormsControls
         public IntPtr comServerWindowHandle { get; set; }
         public string Message { get; set; }
 
-        public Type comServer;
-        public object comServerInstance;
+        //public Type comServer;
+        private IBlazorAppComServer blazorAppComServer { get; set; }
 
         public BlazorAppComClientForm()
         {
@@ -38,25 +38,28 @@ namespace BlazorApp.WinFormsControls
         public void InitializeWebView()
         {
             //https://www.c-sharpcorner.com/article/calling-a-com-component-from-C-Sharp-late-binding/
+            /*
             comServer = Type.GetTypeFromProgID("BlazorApp.ComServer.BlazorAppComServer");
-            comServerInstance = Activator.CreateInstance(comServer);
+            blazorAppComServer = Activator.CreateInstance(comServer);
+            comServer.InvokeMember("Show", System.Reflection.BindingFlags.InvokeMethod, null, blazorAppComServer, Array.Empty<Object>());
+            var handle = comServer.InvokeMember("WindowHandle", System.Reflection.BindingFlags.InvokeMethod, null, blazorAppComServer, new object[] { });
+            */
+            
+            blazorAppComServer = new IBlazorAppComServer();
+            comServerWindowHandle = blazorAppComServer.WindowHandle();
 
-            comServer.InvokeMember("Show", System.Reflection.BindingFlags.InvokeMethod, null, comServerInstance, Array.Empty<Object>());
-            var handle = comServer.InvokeMember("WindowHandle", System.Reflection.BindingFlags.InvokeMethod, null, comServerInstance, new object[] { });
-
-            comServerWindowHandle = new IntPtr((int)handle);
+            /* Set blazor app as child window by a handle */
             WinHelper.SetWindowLong(comServerWindowHandle, WinHelper.GWL_STYLE, WinHelper.winStyle.WS_VISIBLE);
             var thisWindow = this.Handle;
             WinHelper.SetParent(comServerWindowHandle, thisWindow);
 
-            comServer.InvokeMember("MaximizeWindowSize", System.Reflection.BindingFlags.InvokeMethod, null, comServerInstance, new object[] { });
             ResizeChildWindow();
         }
 
         private void ResizeChildWindow()
         {
-            if (comServerInstance != null)
-                comServer?.InvokeMember("MaximizeWindowSize", System.Reflection.BindingFlags.InvokeMethod, null, comServerInstance, new object[] { });
+            if (blazorAppComServer != null)
+                blazorAppComServer.MaximizeWindowSize();
         }
 
         public void AddToPanel(Panel parentObject)

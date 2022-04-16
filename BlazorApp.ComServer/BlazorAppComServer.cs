@@ -13,21 +13,9 @@ namespace BlazorApp.ComServer
     [ComVisible(true)]
     [Guid(ComGuids.ServerId)]
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface IBlazorAppComServer
+    public interface IBlazorAppComServer: IBlazorAppServer
     {
-        [DispId(1)]
-        public void Start();
-        [DispId(2)]
-        public void Show();
-
-        [DispId(3)]
-        public IntPtr WindowHandle();
-
-        [DispId(4)]
-        public void MaximizeWindowSize();
-
-        [DispId(5)]
-        public string HelloComMessage { get; set; }
+    
     }
 
     [ComVisible(true)]
@@ -42,6 +30,7 @@ namespace BlazorApp.ComServer
 
         }
 
+        [DispId(5)]
         public string HelloComMessage { get; set; } = "Hello COM!";
 
         public void Start()
