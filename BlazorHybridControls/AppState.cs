@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorActiveXControls
 {
-    internal class AppState
+    public class AppState
     {
         public string UserDataPath { get; set; }
         public string BrowserExecutionPath { get; set; }
@@ -20,5 +20,7 @@ namespace BlazorActiveXControls
         {
             Click?.Invoke(this, EventArgs.Empty);
         }
+
+        public string Message { get; set; } = "Hello from Blazor";
     }
 }

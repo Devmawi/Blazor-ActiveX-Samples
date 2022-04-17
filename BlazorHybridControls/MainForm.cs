@@ -1,4 +1,5 @@
 ﻿using BlazorActiveXControl;
+using BlazorApp.ComContracts;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Web.WebView2.WinForms;
@@ -17,7 +18,7 @@ namespace BlazorActiveXControls
 {
     public partial class MainForm : Form
     {
-        private AppState AppState { get; set; } = new AppState();
+        public AppState AppState { get; set; } = new AppState();
         public MainForm()
         {
             InitializeComponent();
@@ -68,11 +69,15 @@ namespace BlazorActiveXControls
            
             
         }
+
+        
+
         protected void AppState_Click(object sender, EventArgs e)
-        {
-            
-           button1.Text = "Try Debugging, Counter:" +  Counter++;
+        {           
+           button1.Text = "Try Debugging, Counter:" +  Counter++;         
         }
+
+        
 
         private void WebView_CoreWebView2InitializationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {

@@ -22,11 +22,28 @@ namespace BlazorApp.ComServer.TestConsole
             message = server.InvokeMember("HelloComMessage", System.Reflection.BindingFlags.InvokeMethod, null, serverInstance, Array.Empty<Object>());
             */
 
+            // COM in .NET Core: https://docs.microsoft.com/en-us/dotnet/core/native-interop/expose-components-to-com
             // Early binding
+            Console.WriteLine("Wait ...");
+            Console.ReadLine();
             var comServer = new IBlazorAppComServer();
+            comServer.ControlClick += ComServer_ControlClick1;
+
             var earlyBindMessage = comServer.HelloComMessage;
             comServer.HelloComMessage = "Hello from early binding!";
             earlyBindMessage = comServer.HelloComMessage;
+            comServer.InvokeControlClick("Test Click");
+
+            Console.WriteLine("Press any key ...");
+            Console.ReadLine();
+
+            SHDocVw.InternetExplorer ie = new SHDocVw.InternetExplorer();
+            //comServer.;
+        }
+
+        public static void ComServer_ControlClick1(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

@@ -7,10 +7,10 @@ namespace BlazorApp.ComContracts
 {
     public interface IBlazorAppServer
     {
-        [DispId(1)]
-        void Start();
-        [DispId(2)]
-        void Show();
+        //[DispId(1)]
+        //void Start();
+        //[DispId(2)]
+        //void Show();
 
         [DispId(3)]
         IntPtr WindowHandle();
@@ -20,5 +20,8 @@ namespace BlazorApp.ComContracts
 
         [DispId(5)]
         string HelloComMessage { get; set; }
+
+        [DispId(6)]
+        void InvokeControlClick(string message);
     }
 }

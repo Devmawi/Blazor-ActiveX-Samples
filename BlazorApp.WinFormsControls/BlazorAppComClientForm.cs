@@ -46,7 +46,7 @@ namespace BlazorApp.WinFormsControls
             
             blazorAppComServer = new IBlazorAppComServer();
             comServerWindowHandle = blazorAppComServer.WindowHandle();
-
+            
             /* Set blazor app as child window by a handle */
             WinHelper.SetWindowLong(comServerWindowHandle, WinHelper.GWL_STYLE, WinHelper.winStyle.WS_VISIBLE);
             var thisWindow = this.Handle;

@@ -13,7 +13,7 @@ namespace BlazorApp.WinFormsControls.ActiveX
     [ComImport]
     [Guid(ComContracts.ComGuids.ServerId)]
     [CoClass(typeof(BlazorAppComServer))]
-    internal interface IBlazorAppComServer: IBlazorAppServer
+    internal interface IBlazorAppComServer: IBlazorAppServer, IBlazorAppServerEventSource
     {
 
     }
