@@ -1,17 +1,16 @@
-﻿using System;
+﻿using BlazorApp.ComContracts;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace BlazorApp.ComContracts.Servers
+namespace BlazorApp.WinFormsControls.ActiveX
 {
     [ComVisible(true)]
-    [Guid(ContractGuids.ServerId)]
+    [Guid(ContractGuids.ActiveXServerId)]
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface IBlazorAppServer
+    public interface IBlazorAppActiveXServer
     {
-        IntPtr WindowHandle();
-        void MaximizeWindowSize();
         string Message { get; set; }
     }
 }

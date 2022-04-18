@@ -16,7 +16,7 @@ namespace BlazorApp.WinFormsControls
 {
     [ComVisible(true)]
     [Guid(ContractGuids.ActiveXServerClassId), ClassInterface(ClassInterfaceType.None)]
-    [ComSourceInterfaces(typeof(BlazorAppServerEvents))]
+    [ComSourceInterfaces(typeof(BlazorAppActiveXServerEvents))]
     public partial class BlazorAppUserControl: UserControl, IBlazorAppActiveXServer, BlazorAppServerEvents_Event
     {
         public BlazorAppComClientForm BlazorApp { get; set; }

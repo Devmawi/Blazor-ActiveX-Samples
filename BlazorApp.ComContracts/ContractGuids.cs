@@ -10,5 +10,6 @@ namespace BlazorApp.ComContracts
 
         public const string ActiveXServerId = "0563c9aa-5ec5-4fed-bbc3-c26b97fc9bf9";
         public const string ActiveXServerClassId = "86edab40-b461-4ff0-b13c-820702a23ab9";
+        public const string ActiveXServerEventsId = "83815c8d-3d80-40e5-b9d3-384afe6554b6";
     }
 }

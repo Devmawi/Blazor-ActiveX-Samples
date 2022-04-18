@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorApp.ComContracts;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -6,10 +7,10 @@ using System.Text;
 namespace BlazorApp.ComContracts.Servers
 {
     [ComVisible(true)]
-    [Guid(ContractGuids.ActiveXServerId)]
+    [Guid(ContractGuids.ActiveXServerEventsId)]
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface IBlazorAppActiveXServer
+    public interface BlazorAppActiveXServerEvents: BlazorAppServerEvents
     {
-        string Message { get; set; }
+       // void MessageChanged(string message);
     }
 }
