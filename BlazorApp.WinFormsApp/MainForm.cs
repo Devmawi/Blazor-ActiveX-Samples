@@ -19,6 +19,7 @@ namespace TestWindowsFormsApp
         public MainForm()
         {
             InitializeComponent();
+            Text = "MainForm";
         }
     }
 
