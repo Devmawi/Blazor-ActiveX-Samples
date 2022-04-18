@@ -17,7 +17,18 @@ namespace BlazorActiveXControls
 {
     public partial class MainForm : Form
     {
-        private AppState AppState { get; set; } = new AppState();
+        //private AppState AppState { get; set; } = new AppState();
+
+        public string UserDataPath { get; set; }
+        public string BrowserExecutionPath { get; set; }
+        public string IndexFile { get; set; }
+        public delegate void ClickHandler(object sender, EventArgs e);
+        public event ClickHandler Click;
+        public void InvokeClick()
+        {
+            Click?.Invoke(this, EventArgs.Empty);
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -26,8 +37,8 @@ namespace BlazorActiveXControls
             {
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddWindowsFormsBlazorWebView();
-                AppState.Click += AppState_Click;
-                serviceCollection.AddSingleton(AppState);
+                Click += AppState_Click;
+                serviceCollection.AddSingleton(this);
 
                 var directory = Path.GetDirectoryName(GetType().Assembly.Location);
                 var path = Path.Combine(directory, "wwwroot\\index.html");       
@@ -45,9 +56,9 @@ namespace BlazorActiveXControls
                     UserDataFolder = userData
                 };
 
-                AppState.UserDataPath = userData;
-                AppState.BrowserExecutionPath = browserExeData;
-                AppState.IndexFile = path;
+                UserDataPath = userData;
+                BrowserExecutionPath = browserExeData;
+                IndexFile = path;
 
                 // https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.winforms.webview2?view=webview2-dotnet-1.0.1185.39#ensurecorewebview2async
                 // https://github.com/MicrosoftEdge/WebView2Feedback/issues/295

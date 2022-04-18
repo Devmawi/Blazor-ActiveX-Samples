@@ -5,23 +5,23 @@
 Hallo App 
 
 <div>
-    User Data: @AppState.UserDataPath
+    User Data: @MainFormContext.UserDataPath
 </div>
 <div>
-    Browser Execution Path: @AppState.BrowserExecutionPath
+    Browser Execution Path: @MainFormContext.BrowserExecutionPath
 </div>
 <div>
-    Index File: @AppState.IndexFile
+    Index File: @MainFormContext.IndexFile
 </div>
 <button @onclick="ClickHandler">Blazor Click</button>
 @code {
 
     [Inject]
-    private AppState AppState { get; set; }
+    private MainForm MainFormContext { get; set; }
 
 
     public void ClickHandler()
     {
-        AppState?.InvokeClick();
+        MainFormContext?.InvokeClick();
     }
 }
