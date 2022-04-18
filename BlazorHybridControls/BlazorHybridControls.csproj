@@ -14,6 +14,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.300-rc.1.5355" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlazorApp.ComContracts\BlazorApp.ComContracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="wwwroot\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -1,4 +1,4 @@
-﻿using BlazorApp.ComContracts;
+﻿using BlazorApp.ComContracts.Servers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace BlazorApp.WinFormsControls.ActiveX
 
     [ComVisible(false)]
     [ComImport]
-    [Guid(ComContracts.ComGuids.ServerId)]
+    [Guid(ComContracts.ContractGuids.ServerId)]
     [CoClass(typeof(BlazorAppComServer))]
     internal interface IBlazorAppComServer: IBlazorAppServer
     {
@@ -20,7 +20,7 @@ namespace BlazorApp.WinFormsControls.ActiveX
 
     [ComVisible(false)]
     [ComImport]
-    [Guid(ComContracts.ComGuids.ServerClassId)]
+    [Guid(ComContracts.ContractGuids.ServerClassId)]
     public class BlazorAppComServer
     {
 

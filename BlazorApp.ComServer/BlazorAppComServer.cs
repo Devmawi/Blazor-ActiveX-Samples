@@ -6,36 +6,20 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using BlazorApp.ComContracts;
+using BlazorApp.ComContracts.Servers;
 
 namespace BlazorApp.ComServer
 {
 
     [ComVisible(true)]
-    [Guid(ComGuids.ServerId)]
-    [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface IBlazorAppComServer: IBlazorAppServer
-    {
-    
-    }
-
-    [ComVisible(true)]
-    [Guid(ComGuids.ServerClassId)
+    [Guid(ContractGuids.ServerClassId)
     , ClassInterface(ClassInterfaceType.None)]
-    public class BlazorAppComServer: MainForm, IBlazorAppComServer
-    {
-
-      
+    [ComSourceInterfaces(typeof(BlazorAppServerEvents))]
+    public class BlazorAppComServer: MainForm, IBlazorAppServer, BlazorAppServerEvents_Event
+    {   
         public BlazorAppComServer():base()
         {
 
-        }
-
-        [DispId(5)]
-        public string HelloComMessage { get; set; } = "Hello COM!";
-
-        public void Start()
-        {
-            throw new NotImplementedException();
         }
     }
 }

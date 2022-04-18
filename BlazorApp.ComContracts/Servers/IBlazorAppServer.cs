@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace BlazorApp.ComContracts
+namespace BlazorApp.ComContracts.Servers
 {
+    [ComVisible(true)]
+    [Guid(ContractGuids.ServerId)]
+    [InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface IBlazorAppServer
     {
-        [DispId(1)]
-        void Start();
-        [DispId(2)]
-        void Show();
-
-        [DispId(3)]
         IntPtr WindowHandle();
-
-        [DispId(4)]
         void MaximizeWindowSize();
-
-        [DispId(5)]
-        string HelloComMessage { get; set; }
+        string Message { get; set; }
     }
 }

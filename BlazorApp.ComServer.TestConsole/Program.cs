@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorApp.ComContracts.Clients;
 
 namespace BlazorApp.ComServer.TestConsole
 {
@@ -23,10 +24,16 @@ namespace BlazorApp.ComServer.TestConsole
             */
 
             // Early binding
-            var comServer = new IBlazorAppComServer();
-            var earlyBindMessage = comServer.HelloComMessage;
-            comServer.HelloComMessage = "Hello from early binding!";
-            earlyBindMessage = comServer.HelloComMessage;
+            var comServer = new BlazorAppServer();
+            comServer.MessageChanged += ComServer_MessageChanged;
+            var earlyBindMessage = comServer.Message;
+            comServer.Message = "Hello from early binding!";
+            earlyBindMessage = comServer.Message;
+        }
+
+        private static void ComServer_MessageChanged(string newMessage)
+        {
+            Console.WriteLine($"New message: {newMessage}.");
         }
     }
 }

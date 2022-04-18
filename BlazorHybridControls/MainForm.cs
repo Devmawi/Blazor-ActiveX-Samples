@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlazorApp.ComContracts.Servers;
 
 namespace BlazorActiveXControls
 {
@@ -21,15 +22,14 @@ namespace BlazorActiveXControls
         public string BrowserExecutionPath { get; set; }
         public string IndexFile { get; set; }
 
-        private string _message;
+        private string _message = "Blazor and WinForms greet you from .NET 6.0";
         public string Message
         {
             get { return _message; }
-            set { _message = value; MessasgeChanged?.Invoke(_message); }
+            set { _message = value; MessageChanged?.Invoke(_message); }
         }
 
-        public delegate void MessasgeChangedEventHandler(string newMessage);
-        public event MessasgeChangedEventHandler MessasgeChanged;
+        public event BlazorAppServerEvents_MessageChangedEventHandler MessageChanged;
 
         public MainForm()
         {
@@ -37,7 +37,7 @@ namespace BlazorActiveXControls
 
             try
             {
-                MessasgeChanged += MainForm_MessasgeChanged;
+                MessageChanged += MainForm_MessasgeChanged;
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddWindowsFormsBlazorWebView();
                 serviceCollection.AddSingleton(this);
