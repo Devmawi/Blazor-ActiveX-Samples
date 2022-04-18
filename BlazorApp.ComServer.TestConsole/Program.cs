@@ -12,6 +12,7 @@ namespace BlazorApp.ComServer.TestConsole
         [STAThread]
         static void Main(string[] args)
         {
+            //https://www.c-sharpcorner.com/article/calling-a-com-component-from-C-Sharp-late-binding/
             // Late binding doesn't work if ComContracts is referenced and used for early binding
             /*
             var server = Type.GetTypeFromProgID("BlazorApp.ComServer.BlazorAppComServer");

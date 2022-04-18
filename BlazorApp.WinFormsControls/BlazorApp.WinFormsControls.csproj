@@ -21,7 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <RegisterForComInterop>true</RegisterForComInterop>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,15 +61,12 @@
     <Compile Include="BlazorAppComClientForm.Designer.cs">
       <DependentUpon>BlazorAppComClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActiveX\BlazorAppComServer.cs" />
     <Compile Include="BlazorAppUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BlazorAppUserControl.Designer.cs">
       <DependentUpon>BlazorAppUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActiveX\ComGuids.cs" />
-    <Compile Include="ActiveX\IBlazorActiveXControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>

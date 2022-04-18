@@ -1,4 +1,4 @@
-﻿using BlazorApp.WinFormsControls.ActiveX;
+﻿using BlazorApp.ComContracts.Clients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +17,7 @@ namespace BlazorApp.WinFormsControls
     {
         public IntPtr comServerWindowHandle { get; set; }
         public string Message { get; set; }
-
-        //public Type comServer;
-        private IBlazorAppComServer blazorAppComServer { get; set; }
+        private BlazorAppServer blazorAppComServer { get; set; }
 
         public BlazorAppComClientForm()
         {
@@ -36,20 +34,13 @@ namespace BlazorApp.WinFormsControls
 
         public void InitializeWebView()
         {
-            //https://www.c-sharpcorner.com/article/calling-a-com-component-from-C-Sharp-late-binding/
-            /*
-            comServer = Type.GetTypeFromProgID("BlazorApp.ComServer.BlazorAppComServer");
-            blazorAppComServer = Activator.CreateInstance(comServer);
-            comServer.InvokeMember("Show", System.Reflection.BindingFlags.InvokeMethod, null, blazorAppComServer, Array.Empty<Object>());
-            var handle = comServer.InvokeMember("WindowHandle", System.Reflection.BindingFlags.InvokeMethod, null, blazorAppComServer, new object[] { });
-            */
             
-            blazorAppComServer = new IBlazorAppComServer();
+            blazorAppComServer = new BlazorAppServer();
             comServerWindowHandle = blazorAppComServer.WindowHandle();
 
             /* Set blazor app as child window by a handle */
             WinHelper.SetWindowLong(comServerWindowHandle, WinHelper.GWL_STYLE, WinHelper.winStyle.WS_VISIBLE);
-            var thisWindow = this.Handle;
+            var thisWindow = Handle;
             WinHelper.SetParent(comServerWindowHandle, thisWindow);
 
             ResizeChildWindow();

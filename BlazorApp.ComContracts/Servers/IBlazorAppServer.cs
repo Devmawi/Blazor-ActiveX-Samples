@@ -8,10 +8,9 @@ namespace BlazorApp.ComContracts.Servers
     [ComVisible(true)]
     [Guid(ContractGuids.ServerId)]
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface IBlazorAppServer
+    public interface IBlazorAppServer: IBlazorAppActiveXServer
     {
         IntPtr WindowHandle();
         void MaximizeWindowSize();
-        string Message { get; set; }
     }
 }
