@@ -8,9 +8,9 @@ namespace BlazorApp.ComContracts.Servers
 {
     [ComVisible(true)]
     [Guid(ContractGuids.ActiveXServerEventsId)]
-    [InterfaceType(ComInterfaceType.InterfaceIsDual)]
-    public interface BlazorAppActiveXServerEvents: BlazorAppServerEvents
+    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)] // Dual interface doesn't work in VBA
+    public interface BlazorAppActiveXServerEvents
     {
-       // void MessageChanged(string message);
+       void MessageChanged(string message);
     }
 }
