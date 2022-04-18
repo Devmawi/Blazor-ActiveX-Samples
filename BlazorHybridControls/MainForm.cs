@@ -17,17 +17,19 @@ namespace BlazorActiveXControls
 {
     public partial class MainForm : Form
     {
-        //private AppState AppState { get; set; } = new AppState();
-
         public string UserDataPath { get; set; }
         public string BrowserExecutionPath { get; set; }
         public string IndexFile { get; set; }
-        public delegate void ClickHandler(object sender, EventArgs e);
-        public event ClickHandler Click;
-        public void InvokeClick()
+
+        private string _message;
+        public string Message
         {
-            Click?.Invoke(this, EventArgs.Empty);
+            get { return _message; }
+            set { _message = value; MessasgeChanged?.Invoke(_message); }
         }
+
+        public delegate void MessasgeChangedEventHandler(string newMessage);
+        public event MessasgeChangedEventHandler MessasgeChanged;
 
         public MainForm()
         {
@@ -35,9 +37,9 @@ namespace BlazorActiveXControls
 
             try
             {
+                MessasgeChanged += MainForm_MessasgeChanged;
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddWindowsFormsBlazorWebView();
-                Click += AppState_Click;
                 serviceCollection.AddSingleton(this);
 
                 var directory = Path.GetDirectoryName(GetType().Assembly.Location);
@@ -63,34 +65,20 @@ namespace BlazorActiveXControls
                 // https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.winforms.webview2?view=webview2-dotnet-1.0.1185.39#ensurecorewebview2async
                 // https://github.com/MicrosoftEdge/WebView2Feedback/issues/295
                 // C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE.WebView2\EBWebView
-                blazorWebView1.WebView.CreationProperties = creationProperties;
-                blazorWebView1.WebView.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
+                blazorWebView1.WebView.CreationProperties = creationProperties;             
                 blazorWebView1.HostPage = path;
                 blazorWebView1.Services = serviceCollection.BuildServiceProvider();
                 blazorWebView1.RootComponents.Add<App>("#app");
-
-
             }
             catch (Exception ex)
-            {
-
-                
-            }
-           
-            
+            {                
+            }          
         }
-        protected void AppState_Click(object sender, EventArgs e)
+
+        private void MainForm_MessasgeChanged(string newMessage)
         {
-            
-           button1.Text = "Try Debugging, Counter:" +  Counter++;
+            button1.Text = newMessage;
         }
-
-        private void WebView_CoreWebView2InitializationCompleted(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
-        {
-            
-        }
-
-        public int Counter { get; set; }
 
         public IntPtr WindowHandle()
         {
@@ -110,7 +98,8 @@ namespace BlazorActiveXControls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var b = blazorWebView1.WebView.CoreWebView2;
+            // var b = blazorWebView1.WebView.CoreWebView2;
+            Message = "Button clicked in Forms!";
         }
     }
 }

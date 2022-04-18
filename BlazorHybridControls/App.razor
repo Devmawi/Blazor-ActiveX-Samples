@@ -13,15 +13,36 @@ Hallo App
 <div>
     Index File: @MainFormContext.IndexFile
 </div>
+<form>
+    <label>New message</label>
+    <input @bind-value="NewMessage" ></input>
+</form>
 <button @onclick="ClickHandler">Blazor Click</button>
 @code {
 
     [Inject]
     private MainForm MainFormContext { get; set; }
 
+    public string NewMessage { get; set; } = String.Empty;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        MainFormContext.MessasgeChanged += MainFormContext_MessasgeChanged;
+    }
 
     public void ClickHandler()
     {
-        MainFormContext?.InvokeClick();
+        MainFormContext.Message = NewMessage;
+    }
+
+    public async void  MainFormContext_MessasgeChanged(string message)
+    {
+        await InvokeAsync(() =>
+        {
+            NewMessage = message;
+            StateHasChanged();
+        });
+
     }
 }
