@@ -1,23 +1,27 @@
 ﻿@namespace BlazorActiveXControls
 @using BlazorActiveXControls
 
-<h3>App</h3>
-Hallo App 
-
-<div>
-    User Data: @MainFormContext.UserDataPath
-</div>
-<div>
-    Browser Execution Path: @MainFormContext.BrowserExecutionPath
-</div>
-<div>
-    Index File: @MainFormContext.IndexFile
-</div>
-<form>
-    <label>New message</label>
-    <input @bind-value="NewMessage" ></input>
+<form class="form-control-sm p-4">
+    <h3 class="mb-3">Hybrid Blazor App</h3>
+    <div class="mb-3">
+        <label class="form-label">User Data:</label>
+        <input class="form-control" readonly value=" @MainFormContext.UserDataPath" />
+    </div>
+    <div class="mb-3">     
+        <label class="form-label">  Browser Execution Path:</label>
+        <input class="form-control" readonly value="@MainFormContext.BrowserExecutionPath" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Index file:</label>
+        <input class="form-control" readonly value="@MainFormContext.IndexFile" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">New message:</label>
+    <input class="form-control" @bind-value="NewMessage" ></input>
+    </div>
+    <button type="button" class="btn btn-primary" @onclick="ClickHandler">Blazor Click</button>
 </form>
-<button @onclick="ClickHandler">Blazor Click</button>
+
 @code {
 
     [Inject]
