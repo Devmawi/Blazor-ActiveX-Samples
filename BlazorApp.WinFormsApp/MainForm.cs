@@ -20,6 +20,12 @@ namespace TestWindowsFormsApp
         {
             InitializeComponent();
             Text = "MainForm";
+            this.blazorAppUserControl1.MessageChanged += BlazorAppUserControl1_MessageChanged;
+        }
+
+        private void BlazorAppUserControl1_MessageChanged(string newMessage)
+        {
+            MessageBox.Show($"Greetings from Blazor: {newMessage}");
         }
     }
 

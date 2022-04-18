@@ -1,4 +1,5 @@
 ﻿using BlazorApp.ComContracts.Clients;
+using BlazorApp.ComContracts.Servers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,10 @@ using System.Windows.Forms;
 namespace BlazorApp.WinFormsControls
 {
   
-    public partial class BlazorAppComClientForm : Form
+    public partial class BlazorAppComClientForm : Form, BlazorAppServerEvents_Event
     {
         public IntPtr comServerWindowHandle { get; set; }
-        public string Message { get; set; }
+        public string Message { get => blazorAppComServer.Message; set => blazorAppComServer.Message = value; }
         private BlazorAppServer blazorAppComServer { get; set; }
 
         public BlazorAppComClientForm()
@@ -29,6 +30,18 @@ namespace BlazorApp.WinFormsControls
             catch (Exception)
             {
                 // Quick and dirty fix of some bugs that ouccurs at design time
+            }
+        }
+
+        public event BlazorAppServerEvents_MessageChangedEventHandler MessageChanged
+        {
+            add
+            {
+                blazorAppComServer.MessageChanged+=value;
+            }
+            remove
+            {
+                blazorAppComServer.MessageChanged -= value;
             }
         }
 

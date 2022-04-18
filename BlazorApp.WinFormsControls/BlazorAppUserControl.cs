@@ -16,14 +16,29 @@ namespace BlazorApp.WinFormsControls
 {
     [ComVisible(true)]
     [Guid(ContractGuids.ActiveXServerClassId), ClassInterface(ClassInterfaceType.None)]
-    public partial class BlazorAppUserControl: UserControl, IBlazorAppActiveXServer
+    [ComSourceInterfaces(typeof(BlazorAppServerEvents))]
+    public partial class BlazorAppUserControl: UserControl, IBlazorAppActiveXServer, BlazorAppServerEvents_Event
     {
         public BlazorAppComClientForm BlazorApp { get; set; }
         public BlazorAppUserControl()
         {
-            InitializeComponent();    
+            InitializeComponent();
+            BlazorApp = new BlazorAppComClientForm();
+            BlazorApp.AddToPanel(mainPanel);
         }
         public string Message { get => BlazorApp.Message; set => BlazorApp.Message = value; }
+
+        public event BlazorAppServerEvents_MessageChangedEventHandler MessageChanged
+        {
+            add
+            {
+                BlazorApp.MessageChanged+=value;
+            }
+            remove
+            {
+                BlazorApp.MessageChanged -= value;
+            }
+        }
 
         [ComRegisterFunction]
         public static void RegisterControl(Type type)
@@ -42,8 +57,7 @@ namespace BlazorApp.WinFormsControls
         {
             try
             {
-                BlazorApp = new BlazorAppComClientForm();
-                BlazorApp.AddToPanel(mainPanel);
+              
             }
             catch (Exception)
             {
