@@ -15,10 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.WinFormsControls"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37119761-EC9C-4526-82F4-1C5561AB9CD6}"
 	ProjectSection(SolutionItems) = preProject
+		BlazorApp.ExcelWorkbook.xlsm = BlazorApp.ExcelWorkbook.xlsm
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.ComContracts", "BlazorApp.ComContracts\BlazorApp.ComContracts.csproj", "{B45E7184-462E-4F9B-8316-241C6CB236C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp.ComContracts", "BlazorApp.ComContracts\BlazorApp.ComContracts.csproj", "{B45E7184-462E-4F9B-8316-241C6CB236C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
