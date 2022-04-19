@@ -20,33 +20,44 @@
     <input class="form-control" @bind-value="NewMessage" ></input>
     </div>
     <button type="button" class="btn btn-primary" @onclick="ClickHandler">Blazor Click</button>
+    <button type="button" class="btn btn-primary" @onclick="ClickHandler2">Refresh State</button>
 </form>
 
 @code {
 
     [Inject]
     private MainForm MainFormContext { get; set; }
+    private bool disableEventHandler = false;
 
     public string NewMessage { get; set; } = String.Empty;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        MainFormContext.MessageChanged += MainFormContext_MessasgeChanged;
+        MainFormContext.InternalMessageChanged += MainFormContext_MessageChanged2;
     }
 
     public void ClickHandler()
     {
+        disableEventHandler = true;
         MainFormContext.Message = NewMessage;
+        disableEventHandler = false;
     }
 
-    public async void  MainFormContext_MessasgeChanged(string message)
+    public void ClickHandler2()
     {
-        await InvokeAsync(() =>
-        {
-            NewMessage = message;
-            StateHasChanged();
-        });
+        NewMessage = MainFormContext.Message;
+    }
 
+    public void  MainFormContext_MessageChanged2(string message)
+    {
+        if (!disableEventHandler)
+        {
+            InvokeAsync(() =>
+            {
+                NewMessage = message;
+                StateHasChanged();
+            }).ConfigureAwait(true).GetAwaiter().GetResult();
+        }
     }
 }

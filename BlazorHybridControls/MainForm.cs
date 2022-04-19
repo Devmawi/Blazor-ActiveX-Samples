@@ -26,10 +26,32 @@ namespace BlazorActiveXControls
         public string Message
         {
             get { return _message; }
-            set { _message = value; MessageChanged?.Invoke(_message); }
+            set
+            {
+                _message = value; 
+                try
+                {
+                   
+                    MessageChanged?.Invoke(_message);
+                }
+                catch (Exception)
+                {
+
+                }
+                try
+                {
+                    InternalMessageChanged?.Invoke(_message);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
 
         public event BlazorAppServerEvents_MessageChangedEventHandler MessageChanged;
+        public event BlazorAppServerEvents_MessageChangedEventHandler InternalMessageChanged;
 
         public MainForm()
         {
@@ -37,7 +59,7 @@ namespace BlazorActiveXControls
 
             try
             {
-                MessageChanged += MainForm_MessasgeChanged;
+                MessageChanged += MainForm_MessageChanged;
                 var serviceCollection = new ServiceCollection();
                 serviceCollection.AddWindowsFormsBlazorWebView();
                 serviceCollection.AddSingleton(this);
@@ -75,7 +97,7 @@ namespace BlazorActiveXControls
             }          
         }
 
-        private void MainForm_MessasgeChanged(string newMessage)
+        private void MainForm_MessageChanged(string newMessage)
         {
             button1.Text = newMessage;
         }
