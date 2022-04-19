@@ -37,6 +37,7 @@ namespace BlazorApp.WinFormsControls.ActiveX
                 // CLSID
                 string key = @"CLSID\" + t.GUID.ToString("B");
 
+                // see also: https://docs.microsoft.com/en-us/windows/win32/com/activex-controls-registry-information
                 using (RegistryKey subkey = Registry.ClassesRoot.OpenSubKey(key, true))
                 {
 
@@ -63,15 +64,15 @@ namespace BlazorApp.WinFormsControls.ActiveX
                     }
 
                     // ToolBoxBitmap32: https://docs.microsoft.com/en-us/windows/win32/com/toolboxbitmap32
-                    //using (RegistryKey bitmapKey = subkey.CreateSubKey("ToolBoxBitmap32"))
-                    //{
-                    //    // If you want to have different icons for each control in this assembly
-                    //    // you can modify this section to specify a different icon each time.
-                    //    // Each specified icon must be embedded as a win32resource in the
-                    //    // assembly; the default one is at index 101, but you can add additional ones.
-                    //    bitmapKey.SetValue("", Assembly.GetExecutingAssembly().Location + ", 101",
-                    //                       RegistryValueKind.String);
-                    //}
+                    using (RegistryKey bitmapKey = subkey.CreateSubKey("ToolBoxBitmap32"))
+                    {
+                        // If you want to have different icons for each control in this assembly
+                        // you can modify this section to specify a different icon each time.
+                        // Each specified icon must be embedded as a win32resource in the
+                        // assembly; the default one is at index 101, but you can add additional ones.
+                        bitmapKey.SetValue("", Assembly.GetExecutingAssembly().Location + ", 101",
+                                           RegistryValueKind.String);
+                    }
 
                     //TypeLib
                     using (RegistryKey typeLibKey = subkey.CreateSubKey("TypeLib"))

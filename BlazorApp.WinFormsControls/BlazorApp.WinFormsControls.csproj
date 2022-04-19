@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <Win32Resource>BlazorApp.WinFormsControls.res</Win32Resource>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +85,18 @@
       <Project>{b45e7184-462e-4f9b-8316-241c6cb236c7}</Project>
       <Name>BlazorApp.ComContracts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BlazorApp.WinFormsControls.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BlazorApp.WinFormsControls.bmp" />
+    <Content Include="_BlazorApp.WinFormsControls.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BlazorApp.WinFormsControls.res" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
