@@ -11,6 +11,7 @@ namespace BlazorApp.ComContracts.Servers
     [InterfaceType(ComInterfaceType.InterfaceIsDual)]
     public interface BlazorAppServerEvents
     {
+        [DispId(1)]
         void MessageChanged(string message);
     }
 }

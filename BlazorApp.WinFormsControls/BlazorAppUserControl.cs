@@ -57,7 +57,7 @@ namespace BlazorApp.WinFormsControls
         {
             try
             {
-              
+               
             }
             catch (Exception)
             {

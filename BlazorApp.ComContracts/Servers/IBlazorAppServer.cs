@@ -12,6 +12,7 @@ namespace BlazorApp.ComContracts.Servers
     {
         IntPtr WindowHandle();
         void MaximizeWindowSize();
+        [DispId(0)]
         string Message { get; set; }
     }
 }
