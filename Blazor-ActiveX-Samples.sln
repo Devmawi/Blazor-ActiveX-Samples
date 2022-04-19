@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp.WinFormsControls"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37119761-EC9C-4526-82F4-1C5561AB9CD6}"
 	ProjectSection(SolutionItems) = preProject
+		BlazorApp.ExcelWorkbook.UserForms.xlsm = BlazorApp.ExcelWorkbook.UserForms.xlsm
 		BlazorApp.ExcelWorkbook.xlsm = BlazorApp.ExcelWorkbook.xlsm
 		README.md = README.md
 	EndProjectSection
